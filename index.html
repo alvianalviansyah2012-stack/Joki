@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dafzx Joki & Store v6.0</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <!-- 🌈 Glass Background -->
+  <div class="glass-bg"></div>
+
+  <!-- 🔝 Header -->
+  <header class="header glass">
+    <div class="logo">
+      <img src="assets/img/logo.png" alt="Dafzx Logo" />
+      <h1>Dafzx Joki & Store 🎣</h1>
+    </div>
+    <div class="nav">
+      <button class="nav-btn" data-section="home">Home</button>
+      <button class="nav-btn" data-section="produk">Produk</button>
+      <button class="nav-btn" data-section="order">Pesan</button>
+      <button class="nav-btn" data-section="review">Review</button>
+      <button class="nav-btn" data-section="leaderboard">Top User</button>
+      <button class="nav-btn" data-section="cekOrder">Cek Order</button>
+    </div>
+    <div class="mode-toggle" id="modeToggle">🌞</div>
+  </header>
+
+  <!-- 🔔 Promo Berjalan -->
+  <div class="promo-bar glass" id="promoText">
+    🔥 Diskon 10% pakai kode DAFZX2025!
+  </div>
+
+  <!-- 🏠 Section: Home -->
+  <section id="home" class="active glass-section">
+    <h2>🎣 Selamat Datang di Dafzx Joki & Store</h2>
+    <p>Tempat joki paling cepat, aman, dan terpercaya sejak 2023.</p>
+    <p>Kami buka 24 jam dengan layanan pelanggan responsif dan promo setiap minggu!</p>
+  </section>
+
+  <!-- 🛍️ Section: Produk -->
+  <section id="produk" class="glass-section hidden">
+    <h2>🛍️ Katalog Produk</h2>
+    <div class="produk-grid" id="produkList">
+      <!-- Produk akan dimuat dari JS -->
+    </div>
+  </section>
+
+  <!-- 🧾 Section: Pemesanan -->
+  <section id="order" class="glass-section hidden">
+    <h2>🧾 Form Pemesanan</h2>
+    <form id="orderForm">
+      <input id="nama" placeholder="Nama kamu" required />
+      <select id="produkSelect" required></select>
+      <input id="jumlah" type="number" placeholder="Jumlah" min="1" value="1" />
+      <select id="pembayaran">
+        <option value="Dana">Dana</option>
+        <option value="Gopay">Gopay</option>
+        <option value="Qris">Qris</option>
+        <option value="Transfer">Transfer Bank</option>
+      </select>
+      <input id="promoInput" placeholder="Kode Promo (opsional)" />
+      <p>Total: <span id="totalHarga">Rp0</span></p>
+      <button type="submit">Pesan Sekarang</button>
+    </form>
+  </section>
+
+  <!-- ⭐ Section: Review -->
+  <section id="review" class="glass-section hidden">
+    <h2>⭐ Review Pelanggan</h2>
+    <form id="reviewForm">
+      <input id="reviewNama" placeholder="Nama kamu" required />
+      <textarea id="reviewText" placeholder="Tulis review kamu..." required></textarea>
+      <select id="reviewRating">
+        <option value="5">⭐⭐⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="1">⭐</option>
+      </select>
+      <button type="submit">Kirim Review</button>
+    </form>
+    <div id="reviewList"></div>
+  </section>
+
+  <!-- 🏆 Section: Leaderboard -->
+  <section id="leaderboard" class="glass-section hidden">
+    <h2>🏆 Top Pelanggan</h2>
+    <ul id="leaderboardList"></ul>
+  </section>
+
+  <!-- 🔍 Section: Cek Order -->
+  <section id="cekOrder" class="glass-section hidden">
+    <h2>🔍 Cek Status Pesanan</h2>
+    <input id="cekKode" placeholder="Masukkan kode pesanan (contoh: ORD-001)" />
+    <button id="cekBtn">Cek Sekarang</button>
+    <div id="hasilCek"></div>
+  </section>
+
+  <!-- 💬 ChatBot -->
+  <div class="chatbot glass" id="chatBot">
+    <div class="chat-header">
+      <span>🤖 DafzxBot</span>
+      <button id="closeChat">✖</button>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <p><strong>DafzxBot:</strong> Halo! Mau tanya apa? 😊</p>
+    </div>
+    <div class="chat-input">
+      <input id="chatInput" placeholder="Ketik pertanyaan..." />
+      <button id="sendChat">Kirim</button>
+    </div>
+  </div>
+
+  <button class="chat-toggle" id="chatToggle">💬</button>
+
+  <!-- 👑 Tombol Admin -->
+  <button class="admin-button" id="adminBtn">👑 Admin</button>
+
+  <!-- ⚙️ Panel Admin -->
+  <div class="admin-panel hidden" id="adminPanel">
+    <div class="admin-content glass">
+      <h2>Panel Admin</h2>
+      <div id="adminLogin">
+        <p>Masukkan password admin:</p>
+        <input type="password" id="adminPass" placeholder="Password" />
+        <button id="loginAdmin">Login</button>
+      </div>
+
+      <div id="adminMenu" class="hidden">
+        <button data-admin="produk">Kelola Produk</button>
+        <button data-admin="promo">Kelola Promo</button>
+        <button data-admin="order">Kelola Order</button>
+        <button data-admin="review">Lihat Review</button>
+        <button data-admin="stats">Statistik</button>
+        <button id="logoutAdmin">Logout</button>
+      </div>
+
+      <div id="adminContent"></div>
+    </div>
+  </div>
+
+  <!-- 🦶 Footer -->
+  <footer class="glass">
+    <p>© 2025 Dafzx Joki & Store | Versi 6.0 Glass White Reborn</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+  </html>// 
+🌈 NAVIGATION
+const navButtons = document.querySelectorAll(".nav-btn");
+const sections = document.querySelectorAll(".glass-section");
+navButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    sections.forEach(sec => sec.classList.add("hidden"));
+    document.getElementById(btn.dataset.section).classList.remove("hidden");
+  });
+});
+
+// 🌞 DARK MODE
+const modeToggle = document.getElementById("modeToggle");
+modeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  modeToggle.textContent = document.body.classList.contains("dark") ? "🌙" : "🌞";
+});
+
+// 🛍️ PRODUK DATA
+const produk = [
+  {
+    id: 1,
+    nama: "Astral Rod",
+    harga: 15000,
+    gambar: "assets/produk/astral_rod.png"
+  },
+  {
+    id: 2,
+    nama: "Ares Rod",
+    harga: 25000,
+    gambar: "assets/produk/ares_rod.png"
+  },
+  {
+    id: 3,
+    nama: "Coin Pack",
+    harga: 10000,
+    gambar: "assets/produk/coin_pack.png"
+  },
+  {
+    id: 4,
+    nama: "AFK Service",
+    harga: 20000,
+    gambar: "assets/produk/afk_service.png"
+  }
+];
+
+const produkList = document.getElementById("produkList");
+produk.forEach(p => {
+  const div = document.createElement("div");
+  div.className = "produk-card glass";
+  div.innerHTML = `
+    <img src="${p.gambar}" alt="${p.nama}">
+    <h3>${p.nama}</h3>
+    <p>Rp${p.harga.toLocaleString()}</p>
+    <button onclick="pilihProduk('${p.nama}', ${p.harga})">Pilih</button>
+  `;
+  produkList.appendChild(div);
+});
+
+// 🧾 FORM PEMESANAN
+const produkSelect = document.getElementById("produkSelect");
+produk.forEach(p => {
+  const opt = document.createElement("option");
+  opt.value = p.nama;
+  opt.textContent = `${p.nama} - Rp${p.harga.toLocaleString()}`;
+  produkSelect.appendChild(opt);
+});
+
+let hargaTotal = 0;
+function pilihProduk(nama, harga) {
+  produkSelect.value = nama;
+  updateTotal();
+  document.querySelector('[data-section="order"]').click();
+}
+
+document.getElementById("jumlah").addEventListener("input", updateTotal);
+produkSelect.addEventListener("change", updateTotal);
+
+function updateTotal() {
+  const selected = produk.find(p => p.nama === produkSelect.value);
+  const jumlah = parseInt(document.getElementById("jumlah").value) || 1;
+  hargaTotal = selected ? selected.harga * jumlah : 0;
+  document.getElementById("totalHarga").textContent = `Rp${hargaTotal.toLocaleString()}`;
+}
+
+document.getElementById("orderForm").addEventListener("submit", e => {
+  e.preventDefault();
+  alert("Pesanan berhasil! Nanti dikirim via WhatsApp otomatis (fitur lanjut).");
+});
+
+// 💬 CHATBOT MINI
+const chatToggle = document.getElementById("chatToggle");
+const chatBot = document.getElementById("chatBot");
+const chatBody = document.getElementById("chatBody");
+const sendChat = document.getElementById("sendChat");
+
+chatToggle.addEventListener("click", () => chatBot.style.display = "flex");
+document.getElementById("closeChat").addEventListener("click", () => chatBot.style.display = "none");
+
+sendChat.addEventListener("click", () => {
+  const input = document.getElementById("chatInput");
+  const msg = input.value.trim();
+  if (!msg) return;
+  chatBody.innerHTML += `<p><strong>Kamu:</strong> ${msg}</p>`;
+  setTimeout(() => {
+    let reply = "Maaf, DafzxBot masih belajar 😅";
+    if (msg.toLowerCase().includes("harga")) reply = "Ketik 'cek harga' di menu Produk ya!";
+    if (msg.toLowerCase().includes("halo")) reply = "Halo juga, selamat datang di Dafzx Store!";
+    chatBody.innerHTML += `<p><strong>DafzxBot:</strong> ${reply}</p>`;
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }, 500);
+  input.value = "";
+});
+
+// 🔔 PROMO OTOMATIS
+const promos = [
+  "🔥 Diskon 10% pakai kode DAFZX2025!",
+  "⚡ Free joki 1x untuk pembelian 3 produk!",
+  "💎 Cashback 5% untuk pelanggan VIP!"
+];
+let promoIndex = 0;
+setInterval(() => {
+  promoIndex = (promoIndex + 1) % promos.length;
+  document.getElementById("promoText").textContent = promos[promoIndex];
+}, 4000);
+
+// 👑 ADMIN LOGIN
+const adminBtn = document.getElementById("adminBtn");
+const adminPanel = document.getElementById("adminPanel");
+const loginBtn = document.getElementById("loginAdmin");
+const adminMenu = document.getElementById("adminMenu");
+const adminLogin = document.getElementById("adminLogin");
+const logoutAdmin = document.getElementById("logoutAdmin");
+
+adminBtn.addEventListener("click", () => adminPanel.classList.remove("hidden"));
+logoutAdmin.addEventListener("click", () => {
+  adminMenu.classList.add("hidden");
+  adminLogin.classList.remove("hidden");
+});
+
+loginBtn.addEventListener("click", () => {
+  const pass = document.getElementById("adminPass").value;
+  if (pass === "DafzxAdmin") {
+    adminLogin.classList.add("hidden");
+    adminMenu.classList.remove("hidden");
+  } else alert("Password salah!");
+});
