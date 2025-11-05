@@ -3,32 +3,43 @@
 // © 2025 Dafzx Joki & Store
 
 // =============================
-// 🛍️ Data Produk
-// =============================
-const produkData = [
+// 🎣 Dafzx v5.0 — Produk Lengkap dengan Gambar Online
+const products = [
   {
-    nama: "Astral Rod",
-    harga: 15000,
-    gambar: "https://i.ibb.co/3rKp0G6/fishit1.png",  // ganti dengan link valid
-    deskripsi: "Pancing tingkat dewa, kuat dan langka!"
+    name: "Astral Rod",
+    price: 15000,
+    img: "https://i.ibb.co/3rKp0G6/fishit1.png",
+    desc: "Pancing langka untuk mancing dewa 🎣"
   },
   {
-    nama: "Ares Rod",
-    harga: 20000,
-    gambar: "https://i.ibb.co/z72gWrp/fishit2.png",  // ganti dengan link valid
-    deskripsi: "Khusus untuk para joki pro!"
+    name: "Ares Rod",
+    price: 20000,
+    img: "https://i.ibb.co/z72gWrp/fishit2.png",
+    desc: "Senjata para pemancing profesional 💪"
   },
   {
-    nama: "1M Coin",
-    harga: 15000,
-    gambar: "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/183/2025/10/14/Screenshot_2339-1269319107.jpg",
-    deskripsi: "Tambahkan 1 juta coin ke akunmu!"
+    name: "Angler Rod",
+    price: 25000,
+    img: "https://cdn-offer-photos.zeusx.com/e1505222-1ca0-4180-80ff-37aeb1bda6c8.jpg",
+    desc: "Rod cepat & ringan untuk AFK mancing 🎯"
   },
   {
-    nama: "AFK 24 Jam",
-    harga: 10000,
-    gambar: "https://cdn-icons-png.flaticon.com/512/2920/2920341.png",
-    deskripsi: "Auto joki 24 jam tanpa gangguan!"
+    name: "Ghostfind Rod",
+    price: 30000,
+    img: "https://i.ebayimg.com/images/g/sEQAAeSwfNxo23oh/s-l400.png",
+    desc: "Rod hantu yang bisa dapet rare item 👻"
+  },
+  {
+    name: "1M Coin",
+    price: 15000,
+    img: "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/183/2025/10/14/Screenshot_2339-1269319107.jpg",
+    desc: "Tambah 1 juta coin instan 💰"
+  },
+  {
+    name: "AFK 24 Jam",
+    price: 10000,
+    img: "https://cdn-icons-png.flaticon.com/512/2920/2920341.png",
+    desc: "Auto mancing 24 jam tanpa gangguan 💤"
   }
 ];
 
