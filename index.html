@@ -1,170 +1,115 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dafzx Store v100 Pro Max 🌊</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* 🌊 Glass White Style + Background Laut */
-    body, html {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      font-family: "Poppins", sans-serif;
-      color: white;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JOKI DAFZX STORE v100 PROMAX</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+body{
+  height:100vh;
+  overflow:hidden;
+  background:#f9f9f9;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+}
 
-    /* 🎥 Background video */
-    #bgVideo {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      filter: brightness(0.65);
-    }
+/* 🌊 background laut animasi */
+.bg{
+  position:fixed;
+  inset:0;
+  background:url('https://i.ibb.co/R6Z0rQw/ocean-bg.jpg') center/cover no-repeat;
+  animation:wave 25s linear infinite;
+  z-index:-3;
+}
+@keyframes wave{
+  0%{transform:scale(1) translateX(0);}
+  50%{transform:scale(1.05) translateX(-20px);}
+  100%{transform:scale(1) translateX(0);}
+}
 
-    /* 🧊 Glass container */
-    .glass {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(20px);
-      border-radius: 20px;
-      padding: 20px;
-      margin: 20px auto;
-      width: 90%;
-      max-width: 1100px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.15);
-    }
+/* efek overlay glass */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(255,255,255,0.25);
+  backdrop-filter:blur(20px);
+  z-index:-2;
+}
 
-    h1, h2, h3 {
-      text-align: center;
-      color: #fff;
-    }
+/* judul bergaya Windah */
+.title-box{
+  position:absolute;
+  left:8%;
+  top:40%;
+  transform:translateY(-50%);
+  animation:slidein 1.5s ease-out forwards;
+}
+@keyframes slidein{
+  from{opacity:0;transform:translate(-100px,-50%);}
+  to{opacity:1;transform:translate(0,-50%);}
+}
+.title-box h1{
+  font-size:4em;
+  color:#00b4d8;
+  text-shadow:0 0 20px #90e0ef,0 0 40px #48cae4;
+  font-weight:800;
+}
+.title-box p{
+  font-size:1.2em;
+  color:#023e8a;
+  text-shadow:0 0 10px rgba(0,0,0,0.3);
+  margin-top:10px;
+}
 
-    #promoText {
-      text-align: center;
-      font-size: 1.2em;
-      margin-bottom: 10px;
-      color: #c8e8ff;
-    }
+/* karakter gaya streamer di kanan */
+.character{
+  position:absolute;
+  right:5%;
+  bottom:0;
+  height:95vh;
+  pointer-events:none;
+  filter:drop-shadow(0 0 25px rgba(0,255,255,0.7));
+  animation:floaty 6s ease-in-out infinite;
+}
+@keyframes floaty{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-15px);}
+}
 
-    /* 🛍️ Produk grid */
-    #produkList {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
-    }
-
-    .produk-card {
-      border-radius: 15px;
-      overflow: hidden;
-      text-align: center;
-      background: rgba(255,255,255,0.12);
-      padding: 15px;
-      transition: 0.3s;
-    }
-
-    .produk-card:hover {
-      transform: translateY(-5px);
-      background: rgba(255,255,255,0.18);
-    }
-
-    .produk-card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 10px;
-    }
-
-    button {
-      background: rgba(255,255,255,0.25);
-      border: none;
-      padding: 8px 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      color: white;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: rgba(255,255,255,0.4);
-    }
-
-    #cartSection, #reviewSection, #adminPanel {
-      margin-top: 40px;
-    }
-
-    ul { list-style: none; padding: 0; }
-    li { margin: 5px 0; }
-
-    #adminPanel {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .review-item {
-      background: rgba(255,255,255,0.15);
-      padding: 10px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: #ccc;
-    }
-  </style>
+/* tombol masuk toko */
+.button{
+  position:absolute;
+  bottom:10%;
+  left:8%;
+  background:#00b4d8;
+  color:#fff;
+  border:none;
+  border-radius:12px;
+  padding:15px 30px;
+  font-size:1.2em;
+  cursor:pointer;
+  box-shadow:0 0 25px #00b4d8;
+  transition:.3s;
+}
+.button:hover{background:#48cae4;box-shadow:0 0 35px #48cae4;}
+</style>
 </head>
 <body>
-  <!-- 🎥 Background Video Laut -->
-  <video autoplay muted loop id="bgVideo">
-    <source src="assets/bg.mp4" type="video/mp4">
-  </video>
 
-  <div class="glass">
-    <h1>🌊 Dafzx Store v100 Pro Max</h1>
-    <p id="promoText">Loading promo...</p>
-    
-    <div id="produkList"></div>
+<div class="bg"></div>
+<div class="overlay"></div>
 
-    <div id="cartSection" class="glass">
-      <h2>🧺 Keranjang Belanja</h2>
-      <ul id="cartList"></ul>
-      <p><strong>Total:</strong> <span id="totalHarga">Rp0</span></p>
-      <button onclick="checkout()">Checkout via WhatsApp</button>
-    </div>
+<div class="title-box">
+  <h1>JOKI DAFZX STORE</h1>
+  <p>Windah Streamer Edition v100 PROMAX</p>
+</div>
 
-    <div id="reviewSection" class="glass">
-      <h2>⭐ Review Pelanggan</h2>
-      <form onsubmit="kirimReview(event)">
-        <input type="text" id="reviewNama" placeholder="Nama kamu" required>
-        <input type="text" id="reviewText" placeholder="Tulis review kamu..." required>
-        <button type="submit">Kirim</button>
-      </form>
-      <div id="reviewList"></div>
-    </div>
+<img class="character" src="https://i.ibb.co/wRvxVZh/greenhair-streamer.png" alt="Windah Style Character">
 
-    <div class="glass" id="adminPanel">
-      <h2>👑 Panel Admin</h2>
-      <div id="adminMenu"></div>
-    </div>
+<button class="button" onclick="window.location.href='store.html'">Masuk Toko</button>
 
-    <div style="text-align:center;margin-top:30px;">
-      <button onclick="bukaAdmin()">🔐 Admin</button>
-    </div>
-
-    <footer>
-      <p>© 2025 Dafzx Joki & Store | v100 Pro Max Edition 🌊</p>
-    </footer>
-  </div>
-
-  <script src="script.js"></script>
 </body>
   </html>
