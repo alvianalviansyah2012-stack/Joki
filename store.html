@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dafzx Joki & Store v100 PROMAX</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+body{
+  background:rgba(255,255,255,0.6);
+  backdrop-filter:blur(25px);
+  min-height:100vh;
+  color:#023047;
+  overflow-x:hidden;
+}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:30px 20px;
+  background:rgba(255,255,255,0.3);
+  backdrop-filter:blur(20px);
+  border-bottom:2px solid #00b4d8;
+  box-shadow:0 0 20px #90e0ef;
+}
+header h1{
+  font-size:2.5em;
+  color:#0077b6;
+  text-shadow:0 0 10px #90e0ef;
+}
+header p{color:#023e8a;margin-top:5px;}
+
+/* PRODUK */
+#produkList{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  padding:40px;
+}
+.produk-card{
+  background:rgba(255,255,255,0.5);
+  border-radius:15px;
+  box-shadow:0 0 20px rgba(0,0,0,0.1);
+  overflow:hidden;
+  transition:.3s;
+  text-align:center;
+}
+.produk-card:hover{transform:translateY(-8px);}
+.produk-card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+}
+.produk-card h3{margin:10px 0 5px;color:#0077b6;}
+.produk-card p{font-size:.9em;margin-bottom:10px;color:#023e8a;}
+.produk-card button{
+  background:#00b4d8;
+  border:none;
+  color:#fff;
+  font-weight:bold;
+  border-radius:10px;
+  padding:8px 14px;
+  margin-bottom:15px;
+  cursor:pointer;
+  transition:.3s;
+}
+.produk-card button:hover{background:#48cae4;}
+
+/* CART */
+.cart-section{
+  text-align:center;
+  padding:20px;
+  background:rgba(255,255,255,0.3);
+  margin:20px;
+  border-radius:10px;
+  box-shadow:0 0 20px rgba(0,0,0,0.1);
+}
+#cartList{list-style:none;margin:10px auto;max-width:400px;text-align:left;}
+#cartList li{padding:8px;border-bottom:1px solid #ccc;}
+#totalHarga{font-weight:bold;color:#0077b6;}
+.cart-section button{
+  margin-top:10px;
+  padding:10px 20px;
+  border:none;
+  border-radius:10px;
+  background:#00b4d8;
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+}
+.cart-section button:hover{background:#48cae4;}
+
+/* REVIEW */
+.review-section{
+  text-align:center;
+  margin:40px 20px;
+  background:rgba(255,255,255,0.3);
+  border-radius:10px;
+  padding:20px;
+  box-shadow:0 0 20px rgba(0,0,0,0.1);
+}
+.review-section form{display:flex;flex-direction:column;gap:10px;max-width:400px;margin:auto;}
+.review-section input,.review-section textarea{
+  padding:10px;border:none;border-radius:10px;background:rgba(255,255,255,0.7);
+}
+.review-section button{
+  padding:10px;background:#00b4d8;border:none;color:#fff;font-weight:bold;border-radius:10px;
+}
+.review-section button:hover{background:#48cae4;}
+.review-item{
+  margin:10px auto;
+  max-width:400px;
+  text-align:left;
+  border-bottom:1px solid #90e0ef;
+  padding:5px 0;
+}
+
+/* ADMIN */
+.admin-button{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#00b4d8;
+  border:none;
+  color:#fff;
+  font-weight:bold;
+  border-radius:50px;
+  padding:12px 18px;
+  cursor:pointer;
+  box-shadow:0 0 20px #00b4d8;
+}
+.admin-button:hover{background:#48cae4;}
+.admin-panel{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(255,255,255,0.3);
+  backdrop-filter:blur(25px);
+  z-index:1000;
+  justify-content:center;
+  align-items:center;
+}
+.admin-content{
+  background:rgba(255,255,255,0.8);
+  border-radius:15px;
+  padding:30px;
+  width:90%;
+  max-width:400px;
+  text-align:center;
+  box-shadow:0 0 20px #90e0ef;
+}
+.admin-content button{
+  margin-top:10px;
+  background:#00b4d8;
+  border:none;
+  color:#fff;
+  font-weight:bold;
+  padding:10px 20px;
+  border-radius:10px;
+}
+.admin-content button:hover{background:#48cae4;}
+
+/* MASKOT STREAMER */
+.maskot{
+  position:fixed;
+  bottom:10px;
+  right:10px;
+  height:120px;
+  animation:floaty 5s ease-in-out infinite;
+  filter:drop-shadow(0 0 15px rgba(0,255,255,0.8));
+  z-index:10;
+}
+@keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:15px;
+  font-size:.8em;
+  color:#023e8a;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>JOKI DAFZX STORE</h1>
+  <p>v100 PROMAX – Windah Streamer Edition</p>
+</header>
+
+<section id="produkList"></section>
+
+<section class="cart-section">
+  <h2>🧺 Keranjang</h2>
+  <ul id="cartList"></ul>
+  <p>Total: <span id="totalHarga">Rp0</span></p>
+  <button onclick="checkout()">Checkout via WhatsApp</button>
+</section>
+
+<section class="review-section">
+  <h2>⭐ Review Pelanggan</h2>
+  <form onsubmit="kirimReview(event)">
+    <input id="reviewNama" placeholder="Nama kamu" required>
+    <textarea id="reviewText" placeholder="Tulis review kamu..." required></textarea>
+    <button type="submit">Kirim Review</button>
+  </form>
+  <div id="reviewList"></div>
+</section>
+
+<footer>© 2025 Dafzx Joki & Store | Windah Edition</footer>
+
+<!-- ADMIN -->
+<button class="admin-button" onclick="bukaAdmin()">👑 Admin</button>
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-content">
+    <h2>Panel Admin</h2>
+    <div id="adminMenu"></div>
+  </div>
+</div>
+
+<!-- MASKOT -->
+<img class="maskot" src="https://i.ibb.co/wRvxVZh/greenhair-streamer.png" alt="maskot streamer">
+
+<script>
+// Data Produk
+const produkData=[
+  {nama:"Astral Rod",harga:15000,gambar:"https://i.ibb.co/3rKp0G6/fishit1.png",deskripsi:"Pancing langka untuk mancing dewa 🎣"},
+  {nama:"Ares Rod",harga:20000,gambar:"https://i.ibb.co/z72gWrp/fishit2.png",deskripsi:"Senjata para pemancing profesional 💪"},
+  {nama:"Angler Rod",harga:25000,gambar:"https://cdn-offer-photos.zeusx.com/e1505222-1ca0-4180-80ff-37aeb1bda6c8.jpg",deskripsi:"Rod cepat & ringan untuk AFK mancing 🎯"},
+  {nama:"Ghostfind Rod",harga:30000,gambar:"https://i.ebayimg.com/images/g/sEQAAeSwfNxo23oh/s-l400.png",deskripsi:"Rod hantu yang bisa dapet rare item 👻"},
+  {nama:"1M Coin",harga:15000,gambar:"https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/183/2025/10/14/Screenshot_2339-1269319107.jpg",deskripsi:"Tambah 1 juta coin instan 💰"},
+  {nama:"AFK 24 Jam",harga:10000,gambar:"https://cdn-icons-png.flaticon.com/512/2920/2920341.png",deskripsi:"Auto mancing 24 jam tanpa gangguan 💤"}
+];
+
+// Render produk
+function renderProduk(){
+  const produkList=document.getElementById("produkList");
+  produkList.innerHTML="";
+  produkData.forEach((p,i)=>{
+    const card=document.createElement("div");
+    card.className="produk-card";
+    card.innerHTML=`
+      <img src="${p.gambar}" alt="${p.nama}">
+      <h3>${p.nama}</h3>
+      <p>${p.deskripsi}</p>
+      <p><strong>Rp${p.harga.toLocaleString()}</strong></p>
+      <button onclick="tambahKeranjang(${i})">Tambah ke Keranjang</button>
+    `;
+    produkList.appendChild(card);
+  });
+}
+renderProduk();
+
+// Keranjang
+let cart=JSON.parse(localStorage.getItem("cart")||"[]");
+function tambahKeranjang(i){
+  const p=produkData[i];
+  const ada=cart.find(item=>item.nama===p.nama);
+  if(ada)ada.jumlah++;
+  else cart.push({...p,jumlah:1});
+  simpanCart();renderCart();
+}
+function simpanCart(){localStorage.setItem("cart",JSON.stringify(cart));}
+function renderCart(){
+  const cartList=document.getElementById("cartList");cartList.innerHTML="";
+  let total=0;
+  cart.forEach((item,i)=>{
+    total+=item.harga*item.jumlah;
+    const li=document.createElement("li");
+    li.innerHTML=`${item.nama} x${item.jumlah} - Rp${(item.harga*item.jumlah).toLocaleString()}
+    <button onclick="hapusItem(${i})" style="float:right;background:red;color:white;border:none;border-radius:5px;padding:2px 6px;">X</button>`;
+    cartList.appendChild(li);
+  });
+  document.getElementById("totalHarga").innerText=`Rp${total.toLocaleString()}`;
+}
+renderCart();
+function hapusItem(i){cart.splice(i,1);simpanCart();renderCart();}
+function checkout(){
+  if(cart.length===0)return alert("Keranjang masih kosong!");
+  let pesan="Halo, saya mau order di Dafzx Store:\n\n";
+  cart.forEach(item=>{pesan+=`• ${item.nama} x${item.jumlah} = Rp${(item.harga*item.jumlah).toLocaleString()}\n`;});
+  const total=document.getElementById("totalHarga").innerText;
+  pesan+=`\nTotal: ${total}\n\nTerima kasih!`;
+  window.open(`https://wa.me/6281266435034?text=${encodeURIComponent(pesan)}`);
+}
+
+// Review
+function kirimReview(e){
+  e.preventDefault();
+  const nama=document.getElementById("reviewNama").value.trim();
+  const teks=document.getElementById("reviewText").value.trim();
+  if(!nama||!teks)return alert("Isi semua kolom!");
+  const review={nama,teks};
+  const reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
+  reviews.push(review);
+  localStorage.setItem("reviews",JSON.stringify(reviews));
+  renderReview();
+  e.target.reset();
+}
+function renderReview(){
+  const reviewList=document.getElementById("reviewList");
+  const reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
+  reviewList.innerHTML="";
+  reviews.forEach(r=>{
+    const div=document.createElement("div");
+    div.className="review-item";
+    div.innerHTML=`<strong>${r.nama}</strong><br>${r.teks}`;
+    reviewList.appendChild(div);
+  });
+}
+renderReview();
+
+// Admin
+function bukaAdmin(){
+  const pass=prompt("Masukkan password admin:");
+  if(pass==="DafzxJoki"){
+    document.getElementById("adminPanel").style.display="flex";
+    renderAdminMenu();
+  }else alert("Password salah!");
+}
+function tutupAdmin(){document.getElementById("adminPanel").style.display="none";}
+function renderAdminMenu(){
+  const adminMenu=document.getElementById("adminMenu");
+  adminMenu.innerHTML=`
+    <button onclick="lihatStatistik()">📊 Statistik</button>
+    <button onclick="hapusData()">🗑️ Reset Semua Data</button>
+    <button onclick="tutupAdmin()">Tutup</button>
+  `;
+}
+function lihatStatistik(){
+  const reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
+  const totalProduk=produkData.length;
+  const totalCart=JSON.parse(localStorage.getItem("cart")||"[]").length;
+  alert(`📊 Statistik:\n\nProduk: ${totalProduk}\nReview: ${reviews.length}\nItem di Keranjang: ${totalCart}`);
+}
+function hapusData(){
+  if(confirm("Yakin ingin hapus semua data (cart + review)?")){
+    localStorage.removeItem("cart");
+    localStorage.removeItem("reviews");
+    alert("Data berhasil dihapus!");
+    renderCart();renderReview();
+  }
+}
+</script>
+</body>
+      </html>
