@@ -50,14 +50,14 @@ const produkList = document.getElementById("produkList");
 
 function renderProduk() {
   produkList.innerHTML = "";
-  produkData.forEach((p, i) => {
+  products.forEach((p, i) => {
     const card = document.createElement("div");
     card.className = "produk-card glass";
     card.innerHTML = `
-      <img src="${p.gambar}" alt="${p.nama}">
-      <h3>${p.nama}</h3>
-      <p>${p.deskripsi}</p>
-      <p><strong>Rp${p.harga.toLocaleString()}</strong></p>
+      <img src="${p.img}" alt="${p.name}">
+      <h3>${p.name}</h3>
+      <p>${p.desc}</p>
+      <p><strong>Rp${p.price.toLocaleString()}</strong></p>
       <button onclick="tambahKeranjang(${i})">Tambah</button>
     `;
     produkList.appendChild(card);
@@ -71,8 +71,8 @@ renderProduk();
 let cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
 function tambahKeranjang(index) {
-  const produk = produkData[index];
-  const ada = cart.find(item => item.nama === produk.nama);
+  const produk = products[index];
+  const ada = cart.find(item => item.name === produk.name);
   if (ada) ada.jumlah++;
   else cart.push({ ...produk, jumlah: 1 });
   simpanCart();
@@ -89,10 +89,10 @@ function renderCart() {
   let total = 0;
 
   cart.forEach((item, i) => {
-    total += item.harga * item.jumlah;
+    total += item.price * item.jumlah;
     const li = document.createElement("li");
     li.innerHTML = `
-      ${item.nama} x${item.jumlah} - Rp${(item.harga * item.jumlah).toLocaleString()}
+      ${item.name} x${item.jumlah} - Rp${(item.price * item.jumlah).toLocaleString()}
       <button onclick="hapusItem(${i})" style="float:right;background:red;color:white;border:none;border-radius:5px;padding:2px 6px;">X</button>
     `;
     cartList.appendChild(li);
@@ -112,7 +112,7 @@ function checkout() {
   if (cart.length === 0) return alert("Keranjang masih kosong!");
   let pesan = "Halo, saya mau order di Dafzx Store:\n\n";
   cart.forEach(item => {
-    pesan += `• ${item.nama} x${item.jumlah} = Rp${(item.harga * item.jumlah).toLocaleString()}\n`;
+    pesan += `• ${item.name} x${item.jumlah} = Rp${(item.price * item.jumlah).toLocaleString()}\n`;
   });
   const total = document.getElementById("totalHarga").innerText;
   pesan += `\nTotal: ${total}\n\nTerima kasih!`;
@@ -177,7 +177,7 @@ function renderAdminMenu() {
 
 function lihatStatistik() {
   const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
-  const totalProduk = produkData.length;
+  const totalProduk = products.length;
   const totalCart = JSON.parse(localStorage.getItem("cart") || "[]").length;
   alert(
     `📊 Statistik:\n\nProduk: ${totalProduk}\nReview: ${reviews.length}\nItem di Keranjang: ${totalCart}`
