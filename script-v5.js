@@ -9,37 +9,25 @@ const produkData = [
   {
     nama: "Astral Rod",
     harga: 15000,
-    gambar: "https://i.ibb.co/3rKp0G6/fishit1.png",
+    gambar: "https://i.ibb.co/3rKp0G6/fishit1.png",  // ganti dengan link valid
     deskripsi: "Pancing tingkat dewa, kuat dan langka!"
   },
   {
     nama: "Ares Rod",
     harga: 20000,
-    gambar: "https://i.ibb.co/z72gWrp/fishit2.png",
+    gambar: "https://i.ibb.co/z72gWrp/fishit2.png",  // ganti dengan link valid
     deskripsi: "Khusus untuk para joki pro!"
-  },
-  {
-    nama: "Angler Rod",
-    harga: 25000,
-    gambar: "https://i.ibb.co/8KNM69v/fishit3.png",
-    deskripsi: "Favorit para pemancing cepat!"
-  },
-  {
-    nama: "Ghostfind Rod",
-    harga: 30000,
-    gambar: "https://i.ibb.co/vXrvR4N/fishit4.png",
-    deskripsi: "Rod langka dengan efek glowing."
   },
   {
     nama: "1M Coin",
     harga: 15000,
-    gambar: "https://i.ibb.co/D7d1dFv/coin1m.png",
+    gambar: "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/183/2025/10/14/Screenshot_2339-1269319107.jpg",
     deskripsi: "Tambahkan 1 juta coin ke akunmu!"
   },
   {
     nama: "AFK 24 Jam",
     harga: 10000,
-    gambar: "https://i.ibb.co/m6f1Hsb/afk24.png",
+    gambar: "https://cdn-icons-png.flaticon.com/512/2920/2920341.png",
     deskripsi: "Auto joki 24 jam tanpa gangguan!"
   }
 ];
