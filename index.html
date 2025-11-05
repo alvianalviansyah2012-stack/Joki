@@ -1,513 +1,325 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dafzx Joki & Store v5.0</title>
-
   <style>
-  /* 🌫️ Glass-White Futuristic Theme */
+    /* 🎮 Glass White Gaming Shop Edition */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
+    body {
+      background: linear-gradient(180deg, #f0faff, #dfefff);
+      color: #001d3d;
+      overflow-x: hidden;
+    }
 
-  body {
-    background: linear-gradient(180deg, #eaf7ff, #f7fbff);
-    color: #0a2540;
-    overflow-x: hidden;
-  }
+    /* Efek kaca transparan */
+    .glass {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 25px rgba(0, 153, 255, 0.3);
+    }
 
-  /* Navbar/Header */
-  header {
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 0 20px rgba(0, 153, 255, 0.2);
-    text-align: center;
-    padding: 25px;
-    border-bottom: 1px solid rgba(0, 153, 255, 0.2);
-  }
+    /* Header */
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(0, 80, 255, 0.1);
+      border-bottom: 2px solid #00b4d8;
+      box-shadow: 0 0 30px #0096c7;
+    }
 
-  header h1 {
-    font-size: 2em;
-    color: #0077b6;
-    text-shadow: 0 0 15px #90e0ef;
-  }
+    header h1 {
+      font-size: 2.5em;
+      font-weight: 800;
+      color: #0077b6;
+      text-shadow: 0 0 10px #90e0ef, 0 0 25px #48cae4;
+    }
 
-  header p {
-    color: #555;
-  }
+    .tagline {
+      font-size: 1em;
+      color: #0077b6;
+      margin-top: 10px;
+    }
 
-  /* Promo bar */
-  .promo-bar {
-    text-align: center;
-    padding: 8px;
-    font-weight: bold;
-    background: rgba(0, 153, 255, 0.15);
-    color: #0077b6;
-    border-bottom: 1px solid rgba(0, 153, 255, 0.2);
-  }
+    /* Promo Bar */
+    .promo-bar {
+      background: linear-gradient(90deg, #00b4d8, #0077b6);
+      color: #fff;
+      padding: 8px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 0.9em;
+      letter-spacing: 1px;
+    }
 
-  /* Section base */
-  section {
-    padding: 50px 20px;
-    text-align: center;
-  }
+    /* Produk */
+    .produk-section {
+      padding: 40px 20px;
+      text-align: center;
+    }
 
-  section h2 {
-    color: #0077b6;
-    text-shadow: 0 0 10px #90e0ef;
-    margin-bottom: 25px;
-  }
+    .produk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
 
-  /* Produk Grid */
-  .produk-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
+    .produk-card {
+      border-radius: 15px;
+      padding: 15px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
 
-  .produk-card {
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    box-shadow: 0 4px 25px rgba(0, 153, 255, 0.15);
-    padding: 15px;
-    transition: transform 0.3s;
-  }
+    .produk-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(0, 153, 255, 0.5);
+    }
 
-  .produk-card:hover {
-    transform: scale(1.05);
-  }
+    .produk-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
 
-  .produk-card img {
-    width: 100%;
-    height: 160px;
-    object-fit: contain;
-    border-radius: 15px;
-  }
+    .produk-card h3 {
+      color: #003566;
+    }
 
-  .produk-info {
-    margin-top: 10px;
-  }
+    .produk-card p {
+      font-size: 0.9em;
+      color: #001d3d;
+    }
 
-  .produk-info h3 {
-    color: #0077b6;
-    font-size: 1.1em;
-  }
+    .produk-card button {
+      background: #0077b6;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 5px;
+      transition: 0.3s;
+    }
 
-  .produk-info p {
-    font-size: 0.9em;
-    color: #333;
-  }
+    .produk-card button:hover {
+      background: #00b4d8;
+      box-shadow: 0 0 10px #00b4d8;
+    }
 
-  .produk-info button {
-    margin-top: 8px;
-    background: #00b4d8;
-    border: none;
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-  }
+    /* Keranjang */
+    .cart {
+      max-width: 400px;
+      margin: 30px auto;
+      padding: 20px;
+      border-radius: 10px;
+    }
 
-  .produk-info button:hover {
-    background: #48cae4;
-  }
+    .cart h2 {
+      color: #0077b6;
+      text-shadow: 0 0 10px #90e0ef;
+      margin-bottom: 10px;
+    }
 
-  /* Keranjang */
-  .cart-button {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: #00b4d8;
-    border: none;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    color: #fff;
-    font-size: 1.4em;
-    box-shadow: 0 0 25px rgba(0, 153, 255, 0.5);
-    cursor: pointer;
-    transition: 0.3s;
-  }
+    .cart ul {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 10px;
+    }
 
-  .cart-button:hover {
-    background: #48cae4;
-  }
+    .cart ul li {
+      padding: 5px 0;
+      border-bottom: 1px solid #00b4d8;
+    }
 
-  /* Modal Keranjang/Admin */
-  .modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-  }
+    .cart button {
+      background: #00b4d8;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-  .modal.active {
-    display: flex;
-  }
+    .cart button:hover {
+      background: #0077b6;
+    }
 
-  .modal-content {
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-    box-shadow: 0 0 25px rgba(0, 153, 255, 0.3);
-    padding: 25px;
-    max-width: 600px;
-    width: 90%;
-    color: #0a2540;
-    text-align: left;
-  }
+    /* Review */
+    .review-section {
+      text-align: center;
+      padding: 40px 20px;
+    }
 
-  .modal-content h3 {
-    text-align: center;
-    margin-bottom: 15px;
-    color: #0077b6;
-  }
+    .review-section form {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 10px;
+    }
 
-  .close-modal {
-    background: #00b4d8;
-    color: #fff;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 15px;
-    float: right;
-  }
+    .review-section input,
+    .review-section textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: rgba(255, 255, 255, 0.5);
+    }
 
-  /* Footer */
-  footer {
-    background: rgba(255, 255, 255, 0.5);
-    text-align: center;
-    padding: 15px;
-    border-top: 1px solid rgba(0, 153, 255, 0.2);
-    color: #555;
-    font-size: 0.9em;
-  }
+    .review-section button {
+      background: #0077b6;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .review-section button:hover {
+      background: #00b4d8;
+      box-shadow: 0 0 10px #00b4d8;
+    }
+
+    /* Admin Button */
+    .admin-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0077b6;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 18px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #0096c7;
+      font-weight: bold;
+      transition: 0.3s;
+      z-index: 10;
+    }
+
+    .admin-btn:hover {
+      background: #00b4d8;
+    }
+
+    /* Admin Panel */
+    .admin-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    .admin-content {
+      width: 90%;
+      max-width: 700px;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: left;
+    }
+
+    .admin-content h2 {
+      text-align: center;
+      color: #0077b6;
+      margin-bottom: 20px;
+    }
+
+    .admin-content button {
+      background: #00b4d8;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 5px;
+    }
+
+    .admin-content button:hover {
+      background: #0077b6;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      padding: 15px;
+      border-top: 2px solid #00b4d8;
+      font-size: 0.9em;
+      color: #0077b6;
+      margin-top: 50px;
+    }
+
   </style>
 </head>
-
 <body>
 
   <header>
-    <h1>🐟 Dafzx Joki & Store v5.0</h1>
-    <p>Joki Cepat, Aman, Murah — tampilan Glass White Edition</p>
+    <h1>Dafzx Joki & Store 🎣</h1>
+    <p class="tagline">Joki Cepat, Aman, dan Murah — Versi 5.0</p>
   </header>
 
-  <div class="promo-bar" id="promoText">🔥 Diskon 10% dengan kode DAFZX2025!</div>
+  <div class="promo-bar" id="promoText">🔥 Diskon 10% pakai kode DAFZX2025!</div>
 
-  <section id="produk">
-    <h2>🛒 Katalog Produk</h2>
-    <div class="produk-container" id="produkContainer">
-      <!-- Produk otomatis dari JS -->
-    </div>
+  <section class="produk-section">
+    <h2>🛒 Produk Pilihan</h2>
+    <div class="produk-grid" id="produkList"></div>
   </section>
 
-  <!-- Tombol Keranjang -->
-  <button class="cart-button" onclick="toggleCart()">🛍️</button>
-
-  <!-- Modal Keranjang -->
-  <div class="modal" id="cartModal">
-    <div class="modal-content">
-      <h3>Keranjang Belanja</h3>
-      <div id="cartItems"></div>
-      <p id="cartTotal"><b>Total:</b> Rp0</p>
-      <button onclick="checkoutWA()">Pesan via WhatsApp</button>
-      <button class="close-modal" onclick="toggleCart()">Tutup</button>
-    </div>
+  <div class="cart glass">
+    <h2>🧺 Keranjang Kamu</h2>
+    <ul id="cartList"></ul>
+    <p><strong>Total:</strong> <span id="totalHarga">Rp0</span></p>
+    <button onclick="checkout()">Pesan via WhatsApp</button>
   </div>
 
-  <!-- Modal Admin Panel -->
-  <div class="modal" id="adminPanel">
-    <div class="modal-content" id="adminContent">
-      <!-- Akan diisi lewat JS -->
+  <section class="review-section glass">
+    <h2>⭐ Review Pelanggan</h2>
+    <form id="reviewForm" onsubmit="kirimReview(event)">
+      <input id="reviewNama" placeholder="Nama kamu" required />
+      <textarea id="reviewText" placeholder="Tulis review kamu..." required></textarea>
+      <button type="submit">Kirim Review</button>
+    </form>
+    <div id="reviewList"></div>
+  </section>
+
+  <button class="admin-btn" onclick="bukaAdmin()">👑 Admin</button>
+
+  <div class="admin-panel" id="adminPanel">
+    <div class="admin-content glass">
+      <h2>Panel Admin</h2>
+      <div id="adminMenu"></div>
+      <button onclick="tutupAdmin()">Tutup Panel</button>
     </div>
   </div>
 
   <footer>
-    <p>© 2025 Dafzx Joki & Store | Glass White Edition</p>
+    © 2025 Dafzx Joki & Store | All Rights Reserved
   </footer>
 
-  <!-- JS lanjutan di Bagian 2 -->
+  <!-- JS di Bagian 2 -->
   <script src="script-v5.js"></script>
-// 🎣 Dafzx Joki & Store v5.0 – Glass White All Feature Edition
 
-// ==== 1. Data Produk ====
-const produkData = [
-  {
-    nama: "Mystic Rod",
-    harga: 25000,
-    gambar: "https://i.ebayimg.com/images/g/CYoAAOSwQ51nMzNO/s-l400.png",
-    deskripsi: "Rod pancing langka dengan efek cahaya biru neon."
-  },
-  {
-    nama: "Ares Rod",
-    harga: 20000,
-    gambar: "https://i.ebayimg.com/00/s/MTI4MFgxMjgw/z/nuMAAeSwMalov8Zs/$$_57.JPG",
-    deskripsi: "Rod kekuatan dewa perang — cepat dan kuat!"
-  },
-  {
-    nama: "Astral Rod",
-    harga: 15000,
-    gambar: "https://blog.rrqtopup.com/wp-content/uploads/2025/09/Judul-4.jpg",
-    deskripsi: "Rod bercahaya bintang — tingkatkan peluang tangkapan epik!"
-  },
-  {
-    nama: "Ghostfind Rod",
-    harga: 30000,
-    gambar: "https://blog.rrqtopup.com/wp-content/uploads/2025/09/2-4.jpg",
-    deskripsi: "Rod hantu misterius, jarang sekali muncul di pasaran."
-  },
-  {
-    nama: "1M Coin Pack",
-    harga: 15000,
-    gambar: "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/183/2025/10/14/Screenshot_2339-1269319107.jpg",
-    deskripsi: "Tambahkan 1 juta coin ke akunmu!"
-  },
-  {
-    nama: "3M Coin Pack",
-    harga: 43000,
-    gambar: "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/183/2025/11/01/Screenshot_3967-2488275419.jpg",
-    deskripsi: "3 juta coin untuk upgrade item lebih cepat."
-  },
-  {
-    nama: "AFK 24 Jam",
-    harga: 10000,
-    gambar: "https://cdn-icons-png.flaticon.com/512/2920/2920341.png",
-    deskripsi: "Layanan joki AFK selama 24 jam penuh."
-  },
-  {
-    nama: "AFK 7 Hari",
-    harga: 120000,
-    gambar: "https://cdn-icons-png.flaticon.com/512/2920/2920341.png",
-    deskripsi: "Layanan AFK nonstop 7 hari untuk hasil maksimal!"
-  },
-  {
-    nama: "Exclusive Bait Pack",
-    harga: 12000,
-    gambar: "https://cdn-icons-png.flaticon.com/512/616/616408.png",
-    deskripsi: "Umpan langka untuk ikan besar dan eksklusif."
-  },
-  {
-    nama: "VIP Membership (30 Hari)",
-    harga: 50000,
-    gambar: "https://cdn-icons-png.flaticon.com/512/190/190411.png",
-    deskripsi: "Nikmati bonus coin harian dan prioritas order!"
-  }
-];
-
-// ==== 2. Render Produk ====
-const container = document.getElementById("produkContainer");
-
-function renderProduk() {
-  container.innerHTML = "";
-  produkData.forEach((p, i) => {
-    const card = document.createElement("div");
-    card.className = "produk-card";
-    card.innerHTML = `
-      <img src="${p.gambar}" alt="${p.nama}">
-      <div class="produk-info">
-        <h3>${p.nama}</h3>
-        <p>${p.deskripsi}</p>
-        <p><b>Rp${p.harga.toLocaleString()}</b></p>
-        <button onclick="tambahKeKeranjang(${i})">Tambah</button>
-      </div>
-    `;
-    container.appendChild(card);
-  });
-}
-renderProduk();
-
-// ==== 3. Keranjang Belanja ====
-let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
-
-function simpanKeranjang() {
-  localStorage.setItem("keranjang", JSON.stringify(keranjang));
-}
-
-function tambahKeKeranjang(i) {
-  const produk = produkData[i];
-  const item = keranjang.find(p => p.nama === produk.nama);
-  if (item) item.jumlah++;
-  else keranjang.push({ ...produk, jumlah: 1 });
-  simpanKeranjang();
-  notifikasi(`🛒 ${produk.nama} ditambahkan ke keranjang`);
-}
-
-function toggleCart() {
-  const modal = document.getElementById("cartModal");
-  modal.classList.toggle("active");
-  renderKeranjang();
-}
-
-function renderKeranjang() {
-  const cartItems = document.getElementById("cartItems");
-  let total = 0;
-  cartItems.innerHTML = "";
-  keranjang.forEach((item, i) => {
-    total += item.harga * item.jumlah;
-    const div = document.createElement("div");
-    div.innerHTML = `
-      ${item.nama} x${item.jumlah} - Rp${(item.harga * item.jumlah).toLocaleString()}
-      <button onclick="hapusKeranjang(${i})" style="margin-left:10px;">❌</button>
-    `;
-    cartItems.appendChild(div);
-  });
-  document.getElementById("cartTotal").innerHTML = `<b>Total:</b> Rp${total.toLocaleString()}`;
-}
-
-function hapusKeranjang(i) {
-  keranjang.splice(i, 1);
-  simpanKeranjang();
-  renderKeranjang();
-}
-
-function checkoutWA() {
-  if (keranjang.length === 0) return alert("Keranjang kosong!");
-  let pesan = "Halo, saya ingin memesan:\n\n";
-  keranjang.forEach(p => pesan += `${p.nama} x${p.jumlah} = Rp${(p.harga * p.jumlah).toLocaleString()}\n`);
-  const total = keranjang.reduce((a,b)=>a+b.harga*b.jumlah,0);
-  pesan += `\nTotal: Rp${total.toLocaleString()}`;
-  window.open(`https://wa.me/6281266435034?text=${encodeURIComponent(pesan)}`);
-}
-
-// ==== 4. Promo Berganti ====
-let promoIndex = 0;
-const promoTexts = [
-  "🔥 Diskon 10% pakai kode DAFZX2025!",
-  "🎣 Joki cepat & aman — 24 jam online!",
-  "💸 Bayar via Dana / Gopay / Qris!",
-  "⭐ Cek reward harianmu di menu admin!"
-];
-function gantiPromo() {
-  document.getElementById("promoText").innerText = promoTexts[promoIndex];
-  promoIndex = (promoIndex + 1) % promoTexts.length;
-}
-setInterval(gantiPromo, 4000);
-gantiPromo();
-
-// ==== 5. Reward Harian ====
-function ambilReward() {
-  const today = new Date().toDateString();
-  const last = localStorage.getItem("lastReward");
-  if (last === today) return alert("Kamu sudah klaim reward hari ini!");
-  alert("🎁 Reward harian berhasil diklaim! +5 poin leaderboard");
-  localStorage.setItem("lastReward", today);
-  tambahPoin("Kamu", 5);
-}
-
-// ==== 6. Leaderboard ====
-let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [
-  { nama: "Faris", poin: 300 },
-  { nama: "Akbar", poin: 250 },
-  { nama: "Zidan", poin: 180 },
-  { nama: "Rafi", poin: 120 }
-];
-
-function simpanLeaderboard() {
-  localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
-}
-
-function tambahPoin(nama, poin) {
-  let user = leaderboard.find(u => u.nama === nama);
-  if (user) user.poin += poin;
-  else leaderboard.push({ nama, poin });
-  simpanLeaderboard();
-}
-
-function renderLeaderboard() {
-  let html = "<h3>🏆 Leaderboard</h3>";
-  leaderboard.sort((a,b)=>b.poin-a.poin);
-  leaderboard.forEach((u,i)=>{
-    html += `${i+1}. ${u.nama} - ${u.poin} poin<br>`;
-  });
-  return html;
-}
-
-// ==== 7. Review ====
-function simpanReview(nama, teks) {
-  const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-  reviews.push({ nama, teks });
-  localStorage.setItem("reviews", JSON.stringify(reviews));
-  notifikasi("✅ Review berhasil dikirim!");
-}
-
-function renderReview() {
-  const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-  let html = "<h3>⭐ Review Pelanggan</h3>";
-  if (reviews.length === 0) html += "<p>Belum ada review.</p>";
-  reviews.forEach(r=>{
-    html += `<b>${r.nama}</b>: ${r.teks}<br>`;
-  });
-  return html;
-}
-
-// ==== 8. Panel Admin ====
-function loginAdmin() {
-  const pass = prompt("Masukkan password admin:");
-  if (pass === "DafzxJoki") bukaAdmin();
-  else alert("Password salah!");
-}
-
-function bukaAdmin() {
-  const admin = document.getElementById("adminPanel");
-  const content = document.getElementById("adminContent");
-  admin.classList.add("active");
-
-  content.innerHTML = `
-    <h3>👑 Panel Admin</h3>
-    <button onclick="tutupAdmin()">Tutup</button>
-    <hr>
-    <button onclick="ambilReward()">🎁 Ambil Reward Harian</button>
-    <button onclick="alert(renderLeaderboard())">🏆 Lihat Leaderboard</button>
-    <button onclick="promptReview()">⭐ Tambah Review Manual</button>
-    <hr>
-    <div>${renderReview()}</div>
-  `;
-}
-
-function tutupAdmin() {
-  document.getElementById("adminPanel").classList.remove("active");
-}
-
-function promptReview() {
-  const nama = prompt("Nama pelanggan:");
-  const teks = prompt("Tulis review:");
-  if (nama && teks) simpanReview(nama, teks);
-}
-
-// ==== 9. Notifikasi ====
-function notifikasi(teks) {
-  const n = document.createElement("div");
-  n.style.position = "fixed";
-  n.style.bottom = "20px";
-  n.style.right = "20px";
-  n.style.background = "#00b4d8";
-  n.style.color = "#fff";
-  n.style.padding = "10px 15px";
-  n.style.borderRadius = "10px";
-  n.style.boxShadow = "0 0 15px rgba(0,153,255,0.4)";
-  n.innerText = teks;
-  document.body.appendChild(n);
-  setTimeout(() => n.remove(), 2500);
-}
-
-// ==== 10. Pintasan Keyboard ====
-document.addEventListener("keydown", e => {
-  if (e.key === "a" && e.ctrlKey) loginAdmin(); // Ctrl + A → buka admin
-});
 </body>
-</html>
+  </html>
