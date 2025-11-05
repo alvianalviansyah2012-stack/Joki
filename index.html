@@ -1,115 +1,263 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JOKI DAFZX STORE v100 PROMAX</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
-body{
-  height:100vh;
-  overflow:hidden;
-  background:#f9f9f9;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JOKI DAFZX STORE v100 PROMAX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
 
-/* 🌊 background laut animasi */
-.bg{
-  position:fixed;
-  inset:0;
-  background:url('https://i.ibb.co/R6Z0rQw/ocean-bg.jpg') center/cover no-repeat;
-  animation:wave 25s linear infinite;
-  z-index:-3;
-}
-@keyframes wave{
-  0%{transform:scale(1) translateX(0);}
-  50%{transform:scale(1.05) translateX(-20px);}
-  100%{transform:scale(1) translateX(0);}
-}
+    body {
+      background: linear-gradient(180deg, #000000, #003300);
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-/* efek overlay glass */
-.overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(255,255,255,0.25);
-  backdrop-filter:blur(20px);
-  z-index:-2;
-}
+    /* 🌊 Background animasi */
+    .bg-anim {
+      position: fixed;
+      width: 200%;
+      height: 200%;
+      top: 0;
+      left: -50%;
+      background: radial-gradient(circle at 30% 30%, rgba(0,255,0,0.1), transparent 70%), 
+                  radial-gradient(circle at 70% 70%, rgba(0,255,100,0.1), transparent 80%);
+      animation: moveBg 10s infinite linear;
+      z-index: -2;
+    }
+    @keyframes moveBg {
+      from { transform: translateX(0); }
+      to { transform: translateX(-25%); }
+    }
 
-/* judul bergaya Windah */
-.title-box{
-  position:absolute;
-  left:8%;
-  top:40%;
-  transform:translateY(-50%);
-  animation:slidein 1.5s ease-out forwards;
-}
-@keyframes slidein{
-  from{opacity:0;transform:translate(-100px,-50%);}
-  to{opacity:1;transform:translate(0,-50%);}
-}
-.title-box h1{
-  font-size:4em;
-  color:#00b4d8;
-  text-shadow:0 0 20px #90e0ef,0 0 40px #48cae4;
-  font-weight:800;
-}
-.title-box p{
-  font-size:1.2em;
-  color:#023e8a;
-  text-shadow:0 0 10px rgba(0,0,0,0.3);
-  margin-top:10px;
-}
+    /* Header */
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(0, 50, 0, 0.5);
+      box-shadow: 0 0 20px #00ff80;
+      border-bottom: 2px solid #00ff80;
+    }
 
-/* karakter gaya streamer di kanan */
-.character{
-  position:absolute;
-  right:5%;
-  bottom:0;
-  height:95vh;
-  pointer-events:none;
-  filter:drop-shadow(0 0 25px rgba(0,255,255,0.7));
-  animation:floaty 6s ease-in-out infinite;
-}
-@keyframes floaty{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-15px);}
-}
+    header h1 {
+      font-size: 2.5em;
+      color: #00ff80;
+      text-shadow: 0 0 20px #00ff80, 0 0 40px #008000;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00ff80; }
+      to { text-shadow: 0 0 40px #00ffaa; }
+    }
 
-/* tombol masuk toko */
-.button{
-  position:absolute;
-  bottom:10%;
-  left:8%;
-  background:#00b4d8;
-  color:#fff;
-  border:none;
-  border-radius:12px;
-  padding:15px 30px;
-  font-size:1.2em;
-  cursor:pointer;
-  box-shadow:0 0 25px #00b4d8;
-  transition:.3s;
-}
-.button:hover{background:#48cae4;box-shadow:0 0 35px #48cae4;}
-</style>
+    .promo-bar {
+      text-align: center;
+      background: rgba(0, 100, 0, 0.8);
+      padding: 10px;
+      font-weight: bold;
+      color: #fff;
+      border-bottom: 2px solid #00ff80;
+      box-shadow: 0 0 15px #00ff80;
+    }
+
+    /* Produk Grid */
+    .produk-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .produk-card {
+      background: rgba(0, 50, 0, 0.3);
+      border: 1px solid rgba(0, 255, 100, 0.4);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,255,100,0.2);
+      text-align: center;
+      transition: 0.3s;
+      backdrop-filter: blur(8px);
+    }
+
+    .produk-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0,255,100,0.5);
+    }
+
+    .produk-card img {
+      width: 100%;
+      border-radius: 15px 15px 0 0;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .produk-card h3 {
+      margin: 10px 0 5px;
+      color: #00ff80;
+    }
+
+    .produk-card p {
+      font-size: 0.9em;
+      color: #ccffcc;
+      padding: 0 10px;
+    }
+
+    .produk-card button {
+      margin: 10px 0 15px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 8px;
+      background: #00ff80;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .produk-card button:hover {
+      background: #33ff99;
+      box-shadow: 0 0 10px #00ff80;
+    }
+
+    /* Keranjang */
+    .cart-section {
+      background: rgba(0, 30, 0, 0.6);
+      padding: 30px 20px;
+      text-align: center;
+      border-top: 2px solid #00ff80;
+      border-bottom: 2px solid #00ff80;
+      box-shadow: 0 0 15px #00ff80;
+    }
+
+    .cart-section ul {
+      list-style: none;
+      max-width: 400px;
+      margin: 10px auto;
+      background: rgba(0,50,0,0.4);
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .cart-section li {
+      text-align: left;
+      margin: 5px 0;
+    }
+
+    .cart-section button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      background: #00ff80;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Review */
+    .review-section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .review-section form {
+      background: rgba(0, 30, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    .review-section input, .review-section textarea {
+      width: 100%;
+      margin: 5px 0;
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      background: #002200;
+      color: #fff;
+    }
+
+    .review-section button {
+      background: #00ff80;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 15px;
+      margin-top: 10px;
+      cursor: pointer;
+      color: #000;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 30, 0, 0.8);
+      border-top: 2px solid #00ff80;
+      font-size: 0.85em;
+    }
+
+    /* Karakter streamer */
+    .streamer-char {
+      position: fixed;
+      right: 30px;
+      bottom: 0;
+      width: 250px;
+      height: auto;
+      z-index: -1;
+      animation: floatChar 4s ease-in-out infinite;
+      opacity: 0.9;
+    }
+    @keyframes floatChar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="bg-anim"></div>
+  <header>
+    <h1>🎮 JOKI DAFZX STORE v100 PROMAX</h1>
+    <p class="tagline">Cepat • Aman • Murah • Streamer Edition</p>
+  </header>
 
-<div class="bg"></div>
-<div class="overlay"></div>
+  <div class="promo-bar" id="promoText">🔥 Diskon 10% pakai kode DAFZX2025!</div>
 
-<div class="title-box">
-  <h1>JOKI DAFZX STORE</h1>
-  <p>Windah Streamer Edition v100 PROMAX</p>
-</div>
+  <main>
+    <section class="produk-container" id="produkList"></section>
 
-<img class="character" src="https://i.ibb.co/wRvxVZh/greenhair-streamer.png" alt="Windah Style Character">
+    <section class="cart-section">
+      <h2>🛒 Keranjang Belanja</h2>
+      <ul id="cartList"></ul>
+      <p><strong>Total: <span id="totalHarga">Rp0</span></strong></p>
+      <button onclick="checkout()">Checkout via WhatsApp</button>
+    </section>
 
-<button class="button" onclick="window.location.href='store.html'">Masuk Toko</button>
+    <section class="review-section">
+      <h2>⭐ Review Pelanggan</h2>
+      <form onsubmit="kirimReview(event)">
+        <input id="reviewNama" placeholder="Nama kamu" required>
+        <textarea id="reviewText" placeholder="Tulis review kamu..." required></textarea>
+        <button type="submit">Kirim Review</button>
+      </form>
+      <div id="reviewList"></div>
+    </section>
+  </main>
 
+  <footer>
+    © 2025 JOKI DAFZX STORE | v100 PROMAX | All Rights Reserved
+  </footer>
+
+  <img src="https://i.ibb.co/pZ4gb6M/green-streamer.png" alt="Streamer Hijau" class="streamer-char">
+
+  <script src="script.js"></script>
 </body>
-  </html>
+                          </html>
