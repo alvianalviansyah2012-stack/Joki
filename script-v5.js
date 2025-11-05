@@ -1,99 +1,80 @@
-// 🎮 Dafzx Joki & Store v5.1 – Glass White Edition
-// © 2025 Dafzx Store — Full Fitur Versi
+// 🎮 Dafzx Store v100 Pro Max
+// Glass White + Background Laut Edition 🌊
+// Semua fitur utama aktif + Admin password "DafzxJoki"
+// © 2025 Dafzx Joki & Store
 
 // =============================
-// 🎣 Data Produk
+// 🐟 Data Produk
 // =============================
 const produkData = [
   {
     nama: "Astral Rod",
     harga: 15000,
     gambar: "https://i.ibb.co/3rKp0G6/fishit1.png",
-    deskripsi: "Pancing langka untuk mancing dewa 🎣",
+    deskripsi: "Pancing langka untuk mancing dewa 🎣"
   },
   {
     nama: "Ares Rod",
     harga: 20000,
     gambar: "https://i.ibb.co/z72gWrp/fishit2.png",
-    deskripsi: "Senjata para pemancing profesional 💪",
+    deskripsi: "Senjata para pemancing profesional 💪"
   },
   {
     nama: "Angler Rod",
     harga: 25000,
     gambar: "https://cdn-offer-photos.zeusx.com/e1505222-1ca0-4180-80ff-37aeb1bda6c8.jpg",
-    deskripsi: "Rod cepat & ringan untuk AFK mancing 🎯",
+    deskripsi: "Rod cepat & ringan untuk AFK mancing 🎯"
   },
   {
     nama: "Ghostfind Rod",
     harga: 30000,
     gambar: "https://i.ebayimg.com/images/g/sEQAAeSwfNxo23oh/s-l400.png",
-    deskripsi: "Rod hantu yang bisa dapet rare item 👻",
+    deskripsi: "Rod hantu yang bisa dapet rare item 👻"
   },
   {
     nama: "1M Coin",
     harga: 15000,
     gambar: "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/183/2025/10/14/Screenshot_2339-1269319107.jpg",
-    deskripsi: "Tambah 1 juta coin instan 💰",
+    deskripsi: "Tambah 1 juta coin instan 💰"
   },
   {
     nama: "AFK 24 Jam",
     harga: 10000,
     gambar: "https://cdn-icons-png.flaticon.com/512/2920/2920341.png",
-    deskripsi: "Auto mancing 24 jam tanpa gangguan 💤",
-  },
+    deskripsi: "Auto mancing 24 jam tanpa gangguan 💤"
+  }
 ];
 
 // =============================
-// 🛒 Render Produk + Filter
+// 🛒 Render Produk
 // =============================
 const produkList = document.getElementById("produkList");
-const searchInput = document.getElementById("searchInput");
-const sortSelect = document.getElementById("sortSelect");
 
-function renderProduk(data = produkData) {
+function renderProduk() {
   produkList.innerHTML = "";
-  data.forEach((p, i) => {
+  produkData.forEach((p, i) => {
     const card = document.createElement("div");
-    card.className = "produk-card";
+    card.className = "produk-card glass";
     card.innerHTML = `
       <img src="${p.gambar}" alt="${p.nama}">
       <h3>${p.nama}</h3>
       <p>${p.deskripsi}</p>
       <p><strong>Rp${p.harga.toLocaleString()}</strong></p>
-      <button onclick="tambahKeranjang(${i})">Tambah ke Keranjang</button>
+      <button onclick="tambahKeranjang(${i})">Tambah</button>
     `;
     produkList.appendChild(card);
   });
 }
 renderProduk();
 
-// 🔍 Search
-searchInput.addEventListener("input", () => {
-  const keyword = searchInput.value.toLowerCase();
-  const filtered = produkData.filter((p) =>
-    p.nama.toLowerCase().includes(keyword)
-  );
-  renderProduk(filtered);
-});
-
-// ⬇️ Sort harga
-sortSelect.addEventListener("change", () => {
-  let sorted = [...produkData];
-  if (sortSelect.value === "termurah")
-    sorted.sort((a, b) => a.harga - b.harga);
-  if (sortSelect.value === "termahal")
-    sorted.sort((a, b) => b.harga - a.harga);
-  renderProduk(sorted);
-});
-
 // =============================
-// 🧺 Keranjang
+// 🧺 Keranjang Belanja
 // =============================
 let cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
 function tambahKeranjang(index) {
   const produk = produkData[index];
-  const ada = cart.find((item) => item.nama === produk.nama);
+  const ada = cart.find(item => item.nama === produk.nama);
   if (ada) ada.jumlah++;
   else cart.push({ ...produk, jumlah: 1 });
   simpanCart();
@@ -142,7 +123,7 @@ function checkout() {
 }
 
 // =============================
-// ⭐ Review
+// ⭐ Review Pelanggan
 // =============================
 function kirimReview(e) {
   e.preventDefault();
@@ -216,13 +197,13 @@ function hapusData() {
 }
 
 // =============================
-// 🎁 Promo & Chatbot
+// 🎁 Promo Teks Berputar
 // =============================
 const promoTexts = [
   "🔥 Diskon 10% pakai kode DAFZX2025!",
   "🎣 Joki cepat & aman — 24 jam online!",
   "💸 Bayar via Dana / Gopay / QRIS!",
-  "🧊 Dafzx Glass White Edition v5.1"
+  "🌊 Dafzx Glass White Edition v100 Pro Max"
 ];
 let promoIndex = 0;
 
@@ -233,7 +214,9 @@ function gantiPromo() {
 setInterval(gantiPromo, 4000);
 gantiPromo();
 
-// 💬 Chatbot Mini
+// =============================
+// 🤖 Chatbot Mini (Shortcut)
+// =============================
 window.addEventListener("keydown", (e) => {
   if (e.key.toLowerCase() === "c") {
     alert("🤖 DafzxBot: Hai! Butuh bantuan? Chat admin via tombol WhatsApp di keranjang!");
