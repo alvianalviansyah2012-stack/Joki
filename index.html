@@ -3,446 +3,511 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dafzx Joki & Store v7.0</title>
+  <title>Dafzx Joki & Store v5.0</title>
+
   <style>
-    /* 🌌 GLASS WHITE NEON BLUE THEME */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
-    body {
-      background: linear-gradient(135deg, #e6f4ff, #f7fbff);
-      color: #001d3d;
-      overflow-x: hidden;
-    }
+  /* 🌫️ Glass-White Futuristic Theme */
 
-    /* Header */
-    header {
-      text-align: center;
-      padding: 40px 20px;
-      background: rgba(255, 255, 255, 0.35);
-      backdrop-filter: blur(12px);
-      border-bottom: 2px solid #48cae4;
-      box-shadow: 0 0 25px rgba(72, 202, 228, 0.6);
-    }
-    header h1 {
-      font-size: 2.5em;
-      color: #0077b6;
-      text-shadow: 0 0 15px #48cae4;
-    }
-    header p {
-      color: #023e8a;
-      font-weight: 500;
-      margin-top: 5px;
-    }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
 
-    /* Promo Bar */
-    .promo-bar {
-      background: rgba(0, 180, 216, 0.8);
-      color: #fff;
-      text-align: center;
-      padding: 10px;
-      font-weight: 600;
-      font-size: 0.95em;
-      letter-spacing: 1px;
-      animation: glow 2s infinite alternate;
-    }
-    @keyframes glow {
-      from { box-shadow: 0 0 10px #48cae4; }
-      to { box-shadow: 0 0 25px #00b4d8; }
-    }
+  body {
+    background: linear-gradient(180deg, #eaf7ff, #f7fbff);
+    color: #0a2540;
+    overflow-x: hidden;
+  }
 
-    /* Produk Section */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 20px;
-      padding: 40px 20px;
-    }
-    .product-card {
-      background: rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(72, 202, 228, 0.4);
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(72, 202, 228, 0.2);
-      text-align: center;
-      padding: 20px;
-      transition: 0.3s;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 30px rgba(72, 202, 228, 0.5);
-    }
-    .product-card img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-    .product-card h3 {
-      color: #0077b6;
-    }
-    .product-card p {
-      color: #023e8a;
-      margin: 5px 0 10px;
-    }
-    .product-card button {
-      background: #00b4d8;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 8px 12px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .product-card button:hover {
-      background: #48cae4;
-      color: #001d3d;
-    }
+  /* Navbar/Header */
+  header {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(0, 153, 255, 0.2);
+    text-align: center;
+    padding: 25px;
+    border-bottom: 1px solid rgba(0, 153, 255, 0.2);
+  }
 
-    /* Chatbot Floating */
-    #chatbot {
-      position: fixed;
-      bottom: 80px;
-      right: 25px;
-      background: rgba(255, 255, 255, 0.45);
-      border: 1px solid #48cae4;
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      width: 300px;
-      display: none;
-      flex-direction: column;
-      box-shadow: 0 0 25px rgba(72, 202, 228, 0.6);
-      z-index: 999;
-    }
-    #chatbot header {
-      padding: 10px;
-      background: rgba(0, 119, 182, 0.9);
-      color: #fff;
-      border-radius: 15px 15px 0 0;
-    }
-    #chatbot-messages {
-      padding: 10px;
-      max-height: 250px;
-      overflow-y: auto;
-      font-size: 0.9em;
-    }
-    #chatbot-input {
-      display: flex;
-      padding: 10px;
-    }
-    #chatbot-input input {
-      flex: 1;
-      padding: 8px;
-      border: none;
-      border-radius: 8px;
-      background: rgba(0, 29, 61, 0.05);
-    }
-    #chatbot-input button {
-      background: #00b4d8;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      padding: 8px 10px;
-      margin-left: 5px;
-      cursor: pointer;
-    }
+  header h1 {
+    font-size: 2em;
+    color: #0077b6;
+    text-shadow: 0 0 15px #90e0ef;
+  }
 
-    .chat-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 25px;
-      background: #00b4d8;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 55px;
-      height: 55px;
-      box-shadow: 0 0 20px #48cae4;
-      font-size: 22px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .chat-btn:hover {
-      background: #48cae4;
-      transform: scale(1.1);
-    }
+  header p {
+    color: #555;
+  }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0, 119, 182, 0.15);
-      border-top: 2px solid #48cae4;
-      color: #023e8a;
-      font-size: 0.85em;
-    }
+  /* Promo bar */
+  .promo-bar {
+    text-align: center;
+    padding: 8px;
+    font-weight: bold;
+    background: rgba(0, 153, 255, 0.15);
+    color: #0077b6;
+    border-bottom: 1px solid rgba(0, 153, 255, 0.2);
+  }
+
+  /* Section base */
+  section {
+    padding: 50px 20px;
+    text-align: center;
+  }
+
+  section h2 {
+    color: #0077b6;
+    text-shadow: 0 0 10px #90e0ef;
+    margin-bottom: 25px;
+  }
+
+  /* Produk Grid */
+  .produk-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .produk-card {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: 0 4px 25px rgba(0, 153, 255, 0.15);
+    padding: 15px;
+    transition: transform 0.3s;
+  }
+
+  .produk-card:hover {
+    transform: scale(1.05);
+  }
+
+  .produk-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    border-radius: 15px;
+  }
+
+  .produk-info {
+    margin-top: 10px;
+  }
+
+  .produk-info h3 {
+    color: #0077b6;
+    font-size: 1.1em;
+  }
+
+  .produk-info p {
+    font-size: 0.9em;
+    color: #333;
+  }
+
+  .produk-info button {
+    margin-top: 8px;
+    background: #00b4d8;
+    border: none;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .produk-info button:hover {
+    background: #48cae4;
+  }
+
+  /* Keranjang */
+  .cart-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #00b4d8;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    font-size: 1.4em;
+    box-shadow: 0 0 25px rgba(0, 153, 255, 0.5);
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .cart-button:hover {
+    background: #48cae4;
+  }
+
+  /* Modal Keranjang/Admin */
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+
+  .modal.active {
+    display: flex;
+  }
+
+  .modal-content {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0, 153, 255, 0.3);
+    padding: 25px;
+    max-width: 600px;
+    width: 90%;
+    color: #0a2540;
+    text-align: left;
+  }
+
+  .modal-content h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #0077b6;
+  }
+
+  .close-modal {
+    background: #00b4d8;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    float: right;
+  }
+
+  /* Footer */
+  footer {
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid rgba(0, 153, 255, 0.2);
+    color: #555;
+    font-size: 0.9em;
+  }
   </style>
 </head>
 
 <body>
 
   <header>
-    <h1>Dafzx Joki & Store 🎣</h1>
-    <p>Fast • Secure • Trusted Since 2025</p>
+    <h1>🐟 Dafzx Joki & Store v5.0</h1>
+    <p>Joki Cepat, Aman, Murah — tampilan Glass White Edition</p>
   </header>
 
-  <div class="promo-bar" id="promoText">🔥 Diskon 10% pakai kode DAFZX2025!</div>
+  <div class="promo-bar" id="promoText">🔥 Diskon 10% dengan kode DAFZX2025!</div>
 
-  <section class="products" id="produkList"></section>
+  <section id="produk">
+    <h2>🛒 Katalog Produk</h2>
+    <div class="produk-container" id="produkContainer">
+      <!-- Produk otomatis dari JS -->
+    </div>
+  </section>
 
-  <button class="chat-btn" onclick="toggleChatbot()">💬</button>
+  <!-- Tombol Keranjang -->
+  <button class="cart-button" onclick="toggleCart()">🛍️</button>
 
-  <div id="chatbot">
-    <header>Dafzx ChatBot 🤖</header>
-    <div id="chatbot-messages"></div>
-    <div id="chatbot-input">
-      <input type="text" id="userInput" placeholder="Tanya sesuatu...">
-      <button onclick="sendChat()">Send</button>
+  <!-- Modal Keranjang -->
+  <div class="modal" id="cartModal">
+    <div class="modal-content">
+      <h3>Keranjang Belanja</h3>
+      <div id="cartItems"></div>
+      <p id="cartTotal"><b>Total:</b> Rp0</p>
+      <button onclick="checkoutWA()">Pesan via WhatsApp</button>
+      <button class="close-modal" onclick="toggleCart()">Tutup</button>
     </div>
   </div>
 
-  <footer>© 2025 Dafzx Joki & Store — All Rights Reserved</footer>
+  <!-- Modal Admin Panel -->
+  <div class="modal" id="adminPanel">
+    <div class="modal-content" id="adminContent">
+      <!-- Akan diisi lewat JS -->
+    </div>
+  </div>
 
-<script>
+  <footer>
+    <p>© 2025 Dafzx Joki & Store | Glass White Edition</p>
+  </footer>
+
+  <!-- JS lanjutan di Bagian 2 -->
+  <script src="script-v5.js"></script>
+// 🎣 Dafzx Joki & Store v5.0 – Glass White All Feature Edition
+
+// ==== 1. Data Produk ====
 const produkData = [
-  {nama:"Astral Rod", harga:15000, gambar:"https://i.imgur.com/7aBZC4M.png"},
-  {nama:"Ares Rod", harga:20000, gambar:"https://i.imgur.com/YRWrTCW.png"},
-  {nama:"Angler Rod", harga:25000, gambar:"https://i.imgur.com/t7kIkcw.png"},
-  {nama:"Ghostfind Rod", harga:30000, gambar:"https://i.imgur.com/D6DLYMN.png"},
-  {nama:"1M Coin", harga:15000, gambar:"https://i.imgur.com/d3E1rjz.png"},
-  {nama:"AFK 24 Jam", harga:10000, gambar:"https://i.imgur.com/C5e0whA.png"}
+  {
+    nama: "Mystic Rod",
+    harga: 25000,
+    gambar: "https://i.ebayimg.com/images/g/CYoAAOSwQ51nMzNO/s-l400.png",
+    deskripsi: "Rod pancing langka dengan efek cahaya biru neon."
+  },
+  {
+    nama: "Ares Rod",
+    harga: 20000,
+    gambar: "https://i.ebayimg.com/00/s/MTI4MFgxMjgw/z/nuMAAeSwMalov8Zs/$$_57.JPG",
+    deskripsi: "Rod kekuatan dewa perang — cepat dan kuat!"
+  },
+  {
+    nama: "Astral Rod",
+    harga: 15000,
+    gambar: "https://blog.rrqtopup.com/wp-content/uploads/2025/09/Judul-4.jpg",
+    deskripsi: "Rod bercahaya bintang — tingkatkan peluang tangkapan epik!"
+  },
+  {
+    nama: "Ghostfind Rod",
+    harga: 30000,
+    gambar: "https://blog.rrqtopup.com/wp-content/uploads/2025/09/2-4.jpg",
+    deskripsi: "Rod hantu misterius, jarang sekali muncul di pasaran."
+  },
+  {
+    nama: "1M Coin Pack",
+    harga: 15000,
+    gambar: "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/183/2025/10/14/Screenshot_2339-1269319107.jpg",
+    deskripsi: "Tambahkan 1 juta coin ke akunmu!"
+  },
+  {
+    nama: "3M Coin Pack",
+    harga: 43000,
+    gambar: "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/183/2025/11/01/Screenshot_3967-2488275419.jpg",
+    deskripsi: "3 juta coin untuk upgrade item lebih cepat."
+  },
+  {
+    nama: "AFK 24 Jam",
+    harga: 10000,
+    gambar: "https://cdn-icons-png.flaticon.com/512/2920/2920341.png",
+    deskripsi: "Layanan joki AFK selama 24 jam penuh."
+  },
+  {
+    nama: "AFK 7 Hari",
+    harga: 120000,
+    gambar: "https://cdn-icons-png.flaticon.com/512/2920/2920341.png",
+    deskripsi: "Layanan AFK nonstop 7 hari untuk hasil maksimal!"
+  },
+  {
+    nama: "Exclusive Bait Pack",
+    harga: 12000,
+    gambar: "https://cdn-icons-png.flaticon.com/512/616/616408.png",
+    deskripsi: "Umpan langka untuk ikan besar dan eksklusif."
+  },
+  {
+    nama: "VIP Membership (30 Hari)",
+    harga: 50000,
+    gambar: "https://cdn-icons-png.flaticon.com/512/190/190411.png",
+    deskripsi: "Nikmati bonus coin harian dan prioritas order!"
+  }
 ];
 
-// Render Produk
+// ==== 2. Render Produk ====
+const container = document.getElementById("produkContainer");
+
 function renderProduk() {
-  const list = document.getElementById("produkList");
-  list.innerHTML = "";
-  produkData.forEach(p => {
+  container.innerHTML = "";
+  produkData.forEach((p, i) => {
     const card = document.createElement("div");
-    card.className = "product-card";
+    card.className = "produk-card";
     card.innerHTML = `
       <img src="${p.gambar}" alt="${p.nama}">
-      <h3>${p.nama}</h3>
-      <p>Rp${p.harga.toLocaleString()}</p>
-      <button onclick="beliProduk('${p.nama}', ${p.harga})">Pesan via WhatsApp</button>
+      <div class="produk-info">
+        <h3>${p.nama}</h3>
+        <p>${p.deskripsi}</p>
+        <p><b>Rp${p.harga.toLocaleString()}</b></p>
+        <button onclick="tambahKeKeranjang(${i})">Tambah</button>
+      </div>
     `;
-    list.appendChild(card);
+    container.appendChild(card);
   });
 }
 renderProduk();
 
-// WhatsApp Order
-function beliProduk(nama, harga) {
-  const text = `Halo, saya ingin membeli:\n• Produk: ${nama}\n• Harga: Rp${harga.toLocaleString()}\n\nDari Dafzx Store`;
-  window.open(`https://wa.me/6281266435034?text=${encodeURIComponent(text)}`);
+// ==== 3. Keranjang Belanja ====
+let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+
+function simpanKeranjang() {
+  localStorage.setItem("keranjang", JSON.stringify(keranjang));
 }
 
-// ChatBot
-const chatbot = {
-  "halo": "Halo! 👋 Ada yang bisa Dafzx bantu hari ini?",
-  "harga 1m": "💰 Harga 1M Coin adalah Rp15.000",
-  "promo": "🔥 Gunakan kode DAFZX2025 untuk diskon 10%!",
-  "cara pesan": "🛒 Pilih produk lalu klik 'Pesan via WhatsApp'.",
-  "terima kasih": "Sama-sama 😄 semoga harimu menyenangkan!"
-};
-
-function toggleChatbot() {
-  const bot = document.getElementById("chatbot");
-  bot.style.display = bot.style.display === "flex" ? "none" : "flex";
+function tambahKeKeranjang(i) {
+  const produk = produkData[i];
+  const item = keranjang.find(p => p.nama === produk.nama);
+  if (item) item.jumlah++;
+  else keranjang.push({ ...produk, jumlah: 1 });
+  simpanKeranjang();
+  notifikasi(`🛒 ${produk.nama} ditambahkan ke keranjang`);
 }
 
-function sendChat() {
-  const input = document.getElementById("userInput");
-  const msg = input.value.trim().toLowerCase();
-  if (!msg) return;
-  const chatBox = document.getElementById("chatbot-messages");
-
-  chatBox.innerHTML += `<div><b>Kamu:</b> ${msg}</div>`;
-  input.value = "";
-
-  const reply = chatbot[msg] || "Maaf, Dafzx belum paham pertanyaan itu 😅";
-  setTimeout(() => {
-    chatBox.innerHTML += `<div><b>Bot:</b> ${reply}</div>`;
-    chatBox.scrollTop = chatBox.scrollHeight;
-  }, 500);
+function toggleCart() {
+  const modal = document.getElementById("cartModal");
+  modal.classList.toggle("active");
+  renderKeranjang();
 }
-</script>
-<!-- ========== ADMIN PANEL ========== -->
-<style>
-  /* Overlay */
-  #adminPanel {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(255,255,255,0.25);
-    backdrop-filter: blur(15px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  .admin-box {
-    background: rgba(255,255,255,0.55);
-    border: 2px solid rgba(72,202,228,0.4);
-    border-radius: 15px;
-    box-shadow: 0 0 25px rgba(72,202,228,0.4);
-    width: 90%;
-    max-width: 700px;
-    padding: 25px;
-    color: #001d3d;
-  }
-  .admin-box h2 {
-    color: #0077b6;
-    text-align: center;
-    margin-bottom: 15px;
-  }
-  .admin-box button {
-    background: #00b4d8;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    padding: 8px 12px;
-    margin: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  .admin-box button:hover {
-    background: #48cae4;
-    color: #001d3d;
-  }
-  .admin-section {
-    margin-top: 15px;
-    background: rgba(255,255,255,0.4);
-    border-radius: 10px;
-    padding: 10px 15px;
-  }
-  .admin-section h3 {
-    color: #0077b6;
-  }
-  .admin-close {
-    position: absolute;
-    top: 20px; right: 30px;
-    font-size: 22px;
-    color: #0077b6;
-    cursor: pointer;
-  }
-  #adminBtn {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: #0077b6;
-    border: none;
-    border-radius: 50%;
-    color: white;
-    width: 55px; height: 55px;
-    font-size: 20px;
-    box-shadow: 0 0 20px #48cae4;
-    cursor: pointer;
-    transition: 0.3s;
-    z-index: 500;
-  }
-  #adminBtn:hover {
-    background: #48cae4;
-    transform: scale(1.1);
-  }
-</style>
 
-<button id="adminBtn" onclick="loginAdmin()">👑</button>
-
-<div id="adminPanel">
-  <div class="admin-box">
-    <span class="admin-close" onclick="closeAdmin()">✖</span>
-    <h2>Panel Admin — Dafzx Store</h2>
-
-    <div class="admin-section">
-      <h3>📢 Ubah Promo Berjalan</h3>
-      <input type="text" id="promoInput" placeholder="Teks promo baru" style="width:100%;padding:8px;border-radius:8px;border:none;">
-      <button onclick="updatePromo()">Simpan Promo</button>
-    </div>
-
-    <div class="admin-section">
-      <h3>💰 Edit Harga Produk</h3>
-      <select id="editProduk" style="width:100%;padding:8px;border-radius:8px;">
-        <option value="">Pilih Produk</option>
-      </select>
-      <input type="number" id="newPrice" placeholder="Harga baru (Rp)" style="width:100%;padding:8px;border-radius:8px;margin-top:5px;">
-      <button onclick="ubahHarga()">Update Harga</button>
-    </div>
-
-    <div class="admin-section">
-      <h3>📊 Statistik</h3>
-      <p id="statProduk"></p>
-      <p id="statPromo"></p>
-    </div>
-  </div>
-</div>
-
-<script>
-  // 🔐 Admin Login
-  function loginAdmin() {
-    const pw = prompt("Masukkan password admin:");
-    if (pw === "DafzxJoki") {
-      document.getElementById("adminPanel").style.display = "flex";
-      muatAdminData();
-    } else {
-      alert("Password salah!");
-    }
-  }
-  function closeAdmin() {
-    document.getElementById("adminPanel").style.display = "none";
-  }
-
-  // 🧩 Load data produk ke dropdown
-  function muatAdminData() {
-    const select = document.getElementById("editProduk");
-    select.innerHTML = `<option value="">Pilih Produk</option>`;
-    produkData.forEach((p, i) => {
-      const opt = document.createElement("option");
-      opt.value = i;
-      opt.textContent = `${p.nama} - Rp${p.harga.toLocaleString()}`;
-      select.appendChild(opt);
-    });
-
-    // Statistik sederhana
-    document.getElementById("statProduk").innerText = `🧾 Jumlah produk aktif: ${produkData.length}`;
-    document.getElementById("statPromo").innerText = `🔥 Promo aktif: ${document.getElementById("promoText").innerText}`;
-  }
-
-  // 🏷️ Ubah promo teks
-  function updatePromo() {
-    const newText = document.getElementById("promoInput").value.trim();
-    if (!newText) return alert("Masukkan teks promo dulu!");
-    document.getElementById("promoText").innerText = newText;
-    localStorage.setItem("promoText", newText);
-    alert("Promo berhasil diperbarui!");
-  }
-
-  // 💰 Update harga produk
-  function ubahHarga() {
-    const index = document.getElementById("editProduk").value;
-    const newPrice = parseInt(document.getElementById("newPrice").value);
-    if (index === "" || isNaN(newPrice)) return alert("Pilih produk dan isi harga baru!");
-
-    produkData[index].harga = newPrice;
-    localStorage.setItem("produkData", JSON.stringify(produkData));
-    renderProduk();
-    muatAdminData();
-    alert("Harga berhasil diperbarui!");
-  }
-
-  // 🔁 Load promo dan produk dari localStorage
-  window.addEventListener("load", () => {
-    const savedPromo = localStorage.getItem("promoText");
-    const savedProduk = localStorage.getItem("produkData");
-    if (savedPromo) document.getElementById("promoText").innerText = savedPromo;
-    if (savedProduk) {
-      const parsed = JSON.parse(savedProduk);
-      if (parsed.length) {
-        produkData.splice(0, produkData.length, ...parsed);
-        renderProduk();
-      }
-    }
+function renderKeranjang() {
+  const cartItems = document.getElementById("cartItems");
+  let total = 0;
+  cartItems.innerHTML = "";
+  keranjang.forEach((item, i) => {
+    total += item.harga * item.jumlah;
+    const div = document.createElement("div");
+    div.innerHTML = `
+      ${item.nama} x${item.jumlah} - Rp${(item.harga * item.jumlah).toLocaleString()}
+      <button onclick="hapusKeranjang(${i})" style="margin-left:10px;">❌</button>
+    `;
+    cartItems.appendChild(div);
   });
-  </script>
+  document.getElementById("cartTotal").innerHTML = `<b>Total:</b> Rp${total.toLocaleString()}`;
+}
+
+function hapusKeranjang(i) {
+  keranjang.splice(i, 1);
+  simpanKeranjang();
+  renderKeranjang();
+}
+
+function checkoutWA() {
+  if (keranjang.length === 0) return alert("Keranjang kosong!");
+  let pesan = "Halo, saya ingin memesan:\n\n";
+  keranjang.forEach(p => pesan += `${p.nama} x${p.jumlah} = Rp${(p.harga * p.jumlah).toLocaleString()}\n`);
+  const total = keranjang.reduce((a,b)=>a+b.harga*b.jumlah,0);
+  pesan += `\nTotal: Rp${total.toLocaleString()}`;
+  window.open(`https://wa.me/6281266435034?text=${encodeURIComponent(pesan)}`);
+}
+
+// ==== 4. Promo Berganti ====
+let promoIndex = 0;
+const promoTexts = [
+  "🔥 Diskon 10% pakai kode DAFZX2025!",
+  "🎣 Joki cepat & aman — 24 jam online!",
+  "💸 Bayar via Dana / Gopay / Qris!",
+  "⭐ Cek reward harianmu di menu admin!"
+];
+function gantiPromo() {
+  document.getElementById("promoText").innerText = promoTexts[promoIndex];
+  promoIndex = (promoIndex + 1) % promoTexts.length;
+}
+setInterval(gantiPromo, 4000);
+gantiPromo();
+
+// ==== 5. Reward Harian ====
+function ambilReward() {
+  const today = new Date().toDateString();
+  const last = localStorage.getItem("lastReward");
+  if (last === today) return alert("Kamu sudah klaim reward hari ini!");
+  alert("🎁 Reward harian berhasil diklaim! +5 poin leaderboard");
+  localStorage.setItem("lastReward", today);
+  tambahPoin("Kamu", 5);
+}
+
+// ==== 6. Leaderboard ====
+let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [
+  { nama: "Faris", poin: 300 },
+  { nama: "Akbar", poin: 250 },
+  { nama: "Zidan", poin: 180 },
+  { nama: "Rafi", poin: 120 }
+];
+
+function simpanLeaderboard() {
+  localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+}
+
+function tambahPoin(nama, poin) {
+  let user = leaderboard.find(u => u.nama === nama);
+  if (user) user.poin += poin;
+  else leaderboard.push({ nama, poin });
+  simpanLeaderboard();
+}
+
+function renderLeaderboard() {
+  let html = "<h3>🏆 Leaderboard</h3>";
+  leaderboard.sort((a,b)=>b.poin-a.poin);
+  leaderboard.forEach((u,i)=>{
+    html += `${i+1}. ${u.nama} - ${u.poin} poin<br>`;
+  });
+  return html;
+}
+
+// ==== 7. Review ====
+function simpanReview(nama, teks) {
+  const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+  reviews.push({ nama, teks });
+  localStorage.setItem("reviews", JSON.stringify(reviews));
+  notifikasi("✅ Review berhasil dikirim!");
+}
+
+function renderReview() {
+  const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+  let html = "<h3>⭐ Review Pelanggan</h3>";
+  if (reviews.length === 0) html += "<p>Belum ada review.</p>";
+  reviews.forEach(r=>{
+    html += `<b>${r.nama}</b>: ${r.teks}<br>`;
+  });
+  return html;
+}
+
+// ==== 8. Panel Admin ====
+function loginAdmin() {
+  const pass = prompt("Masukkan password admin:");
+  if (pass === "DafzxJoki") bukaAdmin();
+  else alert("Password salah!");
+}
+
+function bukaAdmin() {
+  const admin = document.getElementById("adminPanel");
+  const content = document.getElementById("adminContent");
+  admin.classList.add("active");
+
+  content.innerHTML = `
+    <h3>👑 Panel Admin</h3>
+    <button onclick="tutupAdmin()">Tutup</button>
+    <hr>
+    <button onclick="ambilReward()">🎁 Ambil Reward Harian</button>
+    <button onclick="alert(renderLeaderboard())">🏆 Lihat Leaderboard</button>
+    <button onclick="promptReview()">⭐ Tambah Review Manual</button>
+    <hr>
+    <div>${renderReview()}</div>
+  `;
+}
+
+function tutupAdmin() {
+  document.getElementById("adminPanel").classList.remove("active");
+}
+
+function promptReview() {
+  const nama = prompt("Nama pelanggan:");
+  const teks = prompt("Tulis review:");
+  if (nama && teks) simpanReview(nama, teks);
+}
+
+// ==== 9. Notifikasi ====
+function notifikasi(teks) {
+  const n = document.createElement("div");
+  n.style.position = "fixed";
+  n.style.bottom = "20px";
+  n.style.right = "20px";
+  n.style.background = "#00b4d8";
+  n.style.color = "#fff";
+  n.style.padding = "10px 15px";
+  n.style.borderRadius = "10px";
+  n.style.boxShadow = "0 0 15px rgba(0,153,255,0.4)";
+  n.innerText = teks;
+  document.body.appendChild(n);
+  setTimeout(() => n.remove(), 2500);
+}
+
+// ==== 10. Pintasan Keyboard ====
+document.addEventListener("keydown", e => {
+  if (e.key === "a" && e.ctrlKey) loginAdmin(); // Ctrl + A → buka admin
+});
 </body>
 </html>
